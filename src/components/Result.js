@@ -12,7 +12,7 @@ class Result extends React.Component {
 			<Item description="一日で使いできるお金" middleware={() => {
 				const d = new Date();
 				const today = d.getDate();
-				const laday = new Date(d.getYear(), d.getMonth(), 0).getDate();
+				const laday = new Date(d.getYear(), d.getMonth() + 1, 0).getDate();
 
 				return (nokori - holding) / (laday - today + 1);
 			}} />

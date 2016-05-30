@@ -22464,7 +22464,7 @@
 					_react2.default.createElement(_Item2.default, { description: "一日で使いできるお金", middleware: function middleware() {
 							var d = new Date();
 							var today = d.getDate();
-							var laday = new Date(d.getYear(), d.getMonth(), 0).getDate();
+							var laday = new Date(d.getYear(), d.getMonth() + 1, 0).getDate();
 
 							return (nokori - holding) / (laday - today + 1);
 						} })
