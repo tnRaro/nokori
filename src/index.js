@@ -8,8 +8,6 @@ import app from "./reducers/";
 import { logger, saver } from "./middlewares/";
 import App from "./components/";
 
-console.log(app, App);
-
 const store = createStore(app, applyMiddleware(logger, saver));
 
 const data = JSON.parse(localStorage.getItem("nokori"));
