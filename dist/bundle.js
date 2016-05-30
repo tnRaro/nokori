@@ -64,15 +64,13 @@
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _middlewares = __webpack_require__(195);
+	var _middlewares = __webpack_require__(194);
 
-	var _components = __webpack_require__(198);
+	var _components = __webpack_require__(197);
 
 	var _components2 = _interopRequireDefault(_components);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	console.log(_reducers2.default, _components2.default);
 
 	var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_middlewares.logger, _middlewares.saver));
 
@@ -21928,11 +21926,11 @@
 
 	var _redux = __webpack_require__(175);
 
-	var _nokori = __webpack_require__(193);
+	var _nokori = __webpack_require__(192);
 
 	var _nokori2 = _interopRequireDefault(_nokori);
 
-	var _holding = __webpack_require__(192);
+	var _holding = __webpack_require__(193);
 
 	var _holding2 = _interopRequireDefault(_holding);
 
@@ -21947,34 +21945,6 @@
 
 /***/ },
 /* 192 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _enum = __webpack_require__(190);
-
-	var holding = function holding() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
-		var action = arguments[1];
-
-		switch (action.type) {
-			case _enum.INIT:
-				return action.data.holding || state;
-			case _enum.SET_HOLDING:
-				return action.value;
-			default:
-				return state;
-		}
-	};
-
-	exports.default = holding;
-
-/***/ },
-/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22002,8 +21972,35 @@
 	exports.default = nokori;
 
 /***/ },
-/* 194 */,
-/* 195 */
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _enum = __webpack_require__(190);
+
+	var holding = function holding() {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
+		var action = arguments[1];
+
+		switch (action.type) {
+			case _enum.INIT:
+				return action.data.holding || state;
+			case _enum.SET_HOLDING:
+				return action.value;
+			default:
+				return state;
+		}
+	};
+
+	exports.default = holding;
+
+/***/ },
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22013,11 +22010,11 @@
 	});
 	exports.saver = exports.logger = undefined;
 
-	var _logger2 = __webpack_require__(196);
+	var _logger2 = __webpack_require__(195);
 
 	var _logger3 = _interopRequireDefault(_logger2);
 
-	var _saver2 = __webpack_require__(197);
+	var _saver2 = __webpack_require__(196);
 
 	var _saver3 = _interopRequireDefault(_saver2);
 
@@ -22027,7 +22024,7 @@
 	exports.saver = _saver3.default;
 
 /***/ },
-/* 196 */
+/* 195 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -22052,7 +22049,7 @@
 	exports.default = logger;
 
 /***/ },
-/* 197 */
+/* 196 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -22075,7 +22072,7 @@
 	exports.default = saver;
 
 /***/ },
-/* 198 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22090,7 +22087,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _containers = __webpack_require__(204);
+	var _containers = __webpack_require__(198);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22127,7 +22124,138 @@
 	exports.default = App;
 
 /***/ },
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.ResultWrap = exports.NokoriWrap = undefined;
+
+	var _NokoriWrap2 = __webpack_require__(199);
+
+	var _NokoriWrap3 = _interopRequireDefault(_NokoriWrap2);
+
+	var _ResultWrap2 = __webpack_require__(202);
+
+	var _ResultWrap3 = _interopRequireDefault(_ResultWrap2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.NokoriWrap = _NokoriWrap3.default;
+	exports.ResultWrap = _ResultWrap3.default;
+
+/***/ },
 /* 199 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _reactRedux = __webpack_require__(168);
+
+	var _Nokori = __webpack_require__(200);
+
+	var _Nokori2 = _interopRequireDefault(_Nokori);
+
+	var _enum = __webpack_require__(190);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var NokoriWrap = (0, _reactRedux.connect)(function (state) {
+		return state;
+	}, function (dispatch) {
+		return {
+			setNokori: function setNokori(value) {
+				dispatch({
+					type: _enum.SET_NOKORI,
+					value: value
+				});
+			},
+			setHolding: function setHolding(value) {
+				dispatch({
+					type: _enum.SET_HOLDING,
+					value: value
+				});
+			}
+		};
+	})(_Nokori2.default);
+
+	exports.default = NokoriWrap;
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Agaru = __webpack_require__(201);
+
+	var _Agaru2 = _interopRequireDefault(_Agaru);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Nokori = function (_React$Component) {
+		_inherits(Nokori, _React$Component);
+
+		function Nokori() {
+			_classCallCheck(this, Nokori);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Nokori).apply(this, arguments));
+		}
+
+		_createClass(Nokori, [{
+			key: "render",
+			value: function render() {
+				var _props = this.props;
+				var nokori = _props.nokori;
+				var holding = _props.holding;
+				var setNokori = _props.setNokori;
+				var setHolding = _props.setHolding;
+
+
+				return _react2.default.createElement(
+					"div",
+					{ className: "nokori" },
+					_react2.default.createElement(
+						"h1",
+						null,
+						"Nokori"
+					),
+					_react2.default.createElement(_Agaru2.default, { placeholder: "残ったお金", value: nokori, setValue: setNokori }),
+					_react2.default.createElement(_Agaru2.default, { placeholder: "除外金", value: holding, setValue: setHolding })
+				);
+			}
+		}]);
+
+		return Nokori;
+	}(_react2.default.Component);
+
+	exports.default = Nokori;
+
+/***/ },
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22257,7 +22385,100 @@
 	exports.default = Agaru;
 
 /***/ },
-/* 200 */
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _reactRedux = __webpack_require__(168);
+
+	var _Result = __webpack_require__(203);
+
+	var _Result2 = _interopRequireDefault(_Result);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ResultWrap = (0, _reactRedux.connect)(function (state) {
+		return state;
+	})(_Result2.default);
+
+	exports.default = ResultWrap;
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Item = __webpack_require__(204);
+
+	var _Item2 = _interopRequireDefault(_Item);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Result = function (_React$Component) {
+		_inherits(Result, _React$Component);
+
+		function Result() {
+			_classCallCheck(this, Result);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Result).apply(this, arguments));
+		}
+
+		_createClass(Result, [{
+			key: "render",
+			value: function render() {
+				var _props = this.props;
+				var nokori = _props.nokori;
+				var holding = _props.holding;
+
+
+				return _react2.default.createElement(
+					"div",
+					{ className: "result" },
+					_react2.default.createElement(
+						"h1",
+						null,
+						"Result"
+					),
+					_react2.default.createElement(_Item2.default, { description: "一日で使いできるお金", middleware: function middleware() {
+							var d = new Date();
+							var today = d.getDate();
+							var laday = new Date(d.getYear(), d.getMonth(), 0).getDate();
+
+							return (nokori - holding) / (laday - today + 1);
+						} })
+				);
+			}
+		}]);
+
+		return Result;
+	}(_react2.default.Component);
+
+	exports.default = Result;
+
+/***/ },
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22320,231 +22541,6 @@
 	}(_react2.default.Component);
 
 	exports.default = Item;
-
-/***/ },
-/* 201 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Agaru = __webpack_require__(199);
-
-	var _Agaru2 = _interopRequireDefault(_Agaru);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Nokori = function (_React$Component) {
-		_inherits(Nokori, _React$Component);
-
-		function Nokori() {
-			_classCallCheck(this, Nokori);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Nokori).apply(this, arguments));
-		}
-
-		_createClass(Nokori, [{
-			key: "render",
-			value: function render() {
-				var _props = this.props;
-				var nokori = _props.nokori;
-				var holding = _props.holding;
-				var setNokori = _props.setNokori;
-				var setHolding = _props.setHolding;
-
-
-				return _react2.default.createElement(
-					"div",
-					{ className: "nokori" },
-					_react2.default.createElement(
-						"h1",
-						null,
-						"Nokori"
-					),
-					_react2.default.createElement(_Agaru2.default, { placeholder: "残ったお金", value: nokori, setValue: setNokori }),
-					_react2.default.createElement(_Agaru2.default, { placeholder: "除外金", value: holding, setValue: setHolding })
-				);
-			}
-		}]);
-
-		return Nokori;
-	}(_react2.default.Component);
-
-	exports.default = Nokori;
-
-/***/ },
-/* 202 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Item = __webpack_require__(200);
-
-	var _Item2 = _interopRequireDefault(_Item);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Result = function (_React$Component) {
-		_inherits(Result, _React$Component);
-
-		function Result() {
-			_classCallCheck(this, Result);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Result).apply(this, arguments));
-		}
-
-		_createClass(Result, [{
-			key: "render",
-			value: function render() {
-				var _props = this.props;
-				var nokori = _props.nokori;
-				var holding = _props.holding;
-
-
-				return _react2.default.createElement(
-					"div",
-					{ className: "result" },
-					_react2.default.createElement(
-						"h1",
-						null,
-						"Result"
-					),
-					_react2.default.createElement(_Item2.default, { description: "一日で使いできるお金", middleware: function middleware() {
-							var d = new Date();
-							var today = d.getDate();
-							var laday = new Date(d.getYear(), d.getMonth(), 0).getDate();
-
-							return (nokori - holding) / (laday - today + 1);
-						} })
-				);
-			}
-		}]);
-
-		return Result;
-	}(_react2.default.Component);
-
-	exports.default = Result;
-
-/***/ },
-/* 203 */,
-/* 204 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.ResultWrap = exports.NokoriWrap = undefined;
-
-	var _NokoriWrap2 = __webpack_require__(205);
-
-	var _NokoriWrap3 = _interopRequireDefault(_NokoriWrap2);
-
-	var _ResultWrap2 = __webpack_require__(206);
-
-	var _ResultWrap3 = _interopRequireDefault(_ResultWrap2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.NokoriWrap = _NokoriWrap3.default;
-	exports.ResultWrap = _ResultWrap3.default;
-
-/***/ },
-/* 205 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _reactRedux = __webpack_require__(168);
-
-	var _Nokori = __webpack_require__(201);
-
-	var _Nokori2 = _interopRequireDefault(_Nokori);
-
-	var _enum = __webpack_require__(190);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var NokoriWrap = (0, _reactRedux.connect)(function (state) {
-		return state;
-	}, function (dispatch) {
-		return {
-			setNokori: function setNokori(value) {
-				dispatch({
-					type: _enum.SET_NOKORI,
-					value: value
-				});
-			},
-			setHolding: function setHolding(value) {
-				dispatch({
-					type: _enum.SET_HOLDING,
-					value: value
-				});
-			}
-		};
-	})(_Nokori2.default);
-
-	exports.default = NokoriWrap;
-
-/***/ },
-/* 206 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _reactRedux = __webpack_require__(168);
-
-	var _Result = __webpack_require__(202);
-
-	var _Result2 = _interopRequireDefault(_Result);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ResultWrap = (0, _reactRedux.connect)(function (state) {
-		return state;
-	})(_Result2.default);
-
-	exports.default = ResultWrap;
 
 /***/ }
 /******/ ]);
