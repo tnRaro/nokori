@@ -1,12 +1,15 @@
+import url from "url";
+
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 
-import { INIT } from "./enum";
+import { INIT, SET_LANGUAGE } from "./enum";
 import app from "./reducers/";
 import { logger, saver } from "./middlewares/";
 import App from "./components/";
+import { language } from "./languages/";
 
 const store = createStore(app, applyMiddleware(logger, saver));
 
@@ -16,6 +19,20 @@ if(data){
 	store.dispatch({
 		type: INIT,
 		data
+	});
+} else {
+	store.dispatch({
+		type: SET_LANGUAGE,
+		lang: language(navigator.language)
+	});
+}
+
+const urlObj = url.parse(location.href, true);
+
+if(urlObj.query.lang){
+	store.dispatch({
+		type: SET_LANGUAGE,
+		lang: language(urlObj.query.lang) || language("en-US")
 	});
 }
 

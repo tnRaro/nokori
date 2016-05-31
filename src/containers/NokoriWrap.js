@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 
 import Nokori from "../components/Nokori";
 
-import { SET_NOKORI, SET_HOLDING } from "../enum";
+import { SET_NOKORI, SET_HOLDING, SET_LANGUAGE } from "../enum";
 
 const NokoriWrap = connect(
 	state => state,
@@ -17,6 +17,12 @@ const NokoriWrap = connect(
 			dispatch({
 				type: SET_HOLDING,
 				value
+			});
+		},
+		setLanguage: lang => {
+			dispatch({
+				type: SET_LANGUAGE,
+				lang
 			});
 		}
 	})
