@@ -15,11 +15,19 @@ const store = createStore(app, applyMiddleware(logger, saver));
 
 const data = JSON.parse(localStorage.getItem("nokori"));
 
+console.log(data);
+
 if(data){
 	store.dispatch({
 		type: INIT,
 		data
 	});
+	if(!data.lang){
+	   store.dispatch({
+		   type: SET_LANGUAGE,
+		   lang: language(navigator.language)
+	   });
+	}
 } else {
 	store.dispatch({
 		type: SET_LANGUAGE,

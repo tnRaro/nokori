@@ -1,6 +1,6 @@
 import { INIT, SET_LANGUAGE } from "../enum";
 
-const lang = (state = {}, action) => {
+const lang = (state = null, action) => {
 	switch(action.type) {
 		case INIT:
 			return action.data.lang || state;

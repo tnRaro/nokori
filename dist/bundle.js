@@ -82,11 +82,19 @@
 
 	var data = JSON.parse(localStorage.getItem("nokori"));
 
+	console.log(data);
+
 	if (data) {
 		store.dispatch({
 			type: _enum.INIT,
 			data: data
 		});
+		if (!data.lang) {
+			store.dispatch({
+				type: _enum.SET_LANGUAGE,
+				lang: (0, _languages.language)(navigator.language)
+			});
+		}
 	} else {
 		store.dispatch({
 			type: _enum.SET_LANGUAGE,
@@ -23468,7 +23476,7 @@
 	var _enum = __webpack_require__(196);
 
 	var lang = function lang() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+		var state = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
 		var action = arguments[1];
 
 		switch (action.type) {
